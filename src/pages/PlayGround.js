@@ -3,11 +3,13 @@ import Player from '../components/Player.js';
 import Piller from '../components/Piller.js';
 import { rectCollision } from '../utility.js';
 import ScoreUI from '../ui/playGroundUI/scoreUI.js';
+import GameOverUI from '../ui/playGroundUI/GameOverUI.js';
 class PlayGround extends Page {
 	constructor(...args) {
 		super(...args);
 		this.player = new Player(this.game);
 		this.scoreUI = new ScoreUI(this.game, this, 0, 0, 200, 50);
+		this.gameOverUI = new GameOverUI(this.game, this);
 
 		// piller container
 		this.pillersTop = [];
@@ -71,7 +73,7 @@ class PlayGround extends Page {
 		this.pillersBottom.forEach((piller) => piller.render(context));
 
 		if (this.gameOver) {
-			this.game.UI.renderGameOverUI(context);
+			this.gameOverUI.render(context);
 		}
 		this.scoreUI.render(context);
 	}
@@ -134,7 +136,10 @@ class PlayGround extends Page {
 	}
 
 	checkGameRestartCondition() {
-		if (this.gameOver && this.game.keys.includes('space')) {
+		if (
+			this.gameOver &&
+			(this.game.keys.includes('space') || this.game.mouse.pressed)
+		) {
 			// game should be restart
 
 			// removing all the piller

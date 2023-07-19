@@ -59,7 +59,10 @@ export default class Player {
 		} else this.frameChangeTimer += deltaTime;
 
 		// flying the bird if user press 'Space'
-		if (this.game.keys.includes('space') && this.flyTimer >= this.flyInterval) {
+		if (
+			(this.game.keys.includes('space') || this.game.mouse.pressed) &&
+			this.flyTimer >= this.flyInterval
+		) {
 			this.fly();
 			this.flyTimer = 0;
 		} else this.flyTimer += deltaTime;

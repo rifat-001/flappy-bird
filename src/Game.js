@@ -29,7 +29,11 @@ class Game {
 
 		// user interactivity data
 		this.keys = [];
-		this.mouse = {};
+		this.mouse = {
+			x: 0,
+			y: 0,
+			pressed: false,
+		};
 
 		// game state
 		this.speed = 3;
@@ -41,8 +45,6 @@ class Game {
 	 * @param deltaTime time between each frame or interval of two consecutive calls
 	 */
 	update(deltaTime) {
-		// if game is over then nothing to update
-		if (this.gameOver) return;
 		this.activePage.update(deltaTime);
 	}
 

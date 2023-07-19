@@ -2,8 +2,8 @@ import Game from './src/Game.js';
 
 function init() {
 	const canvas = document.getElementById('canvas');
-	canvas.height = 500;
-	canvas.width = (canvas.height * 16) / 9; // 16 : 9 ratio
+	canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth; // 16 : 9 ratio
 
 	// global game object
 	const game = new Game(canvas);

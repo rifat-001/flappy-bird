@@ -32,6 +32,16 @@ class InputHandler {
 				(existingKey) => existingKey !== key
 			);
 		});
+
+		window.addEventListener('touchstart', (e) => {
+			this.game.mouse.x = e.x;
+			this.game.mouse.y = e.y;
+			this.game.mouse.pressed = true;
+		});
+
+		window.addEventListener('end', (e) => {
+			this.game.mouse.pressed = false;
+		});
 	}
 
 	getKeyName(key) {
