@@ -3,7 +3,7 @@ import Player from '../components/Player.js';
 import Piller from '../components/Piller.js';
 import { rectCollision } from '../utility.js';
 import GameOverUI from '../ui/playGroundUI/GameOverUI.js';
-import ScoreUI from '../ui/playGroundUI/ScoreUi.js';
+import ScoreUI from '../ui/playGroundUI/ScoreUI.js';
 
 class PlayGround extends Page {
 	constructor(...args) {
