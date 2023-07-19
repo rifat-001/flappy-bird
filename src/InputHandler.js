@@ -42,13 +42,18 @@ class InputHandler {
 		window.addEventListener('end', (e) => {
 			this.game.mouse.pressed = false;
 		});
+		window.addEventListener('touchmove', (e) => {
+			this.game.mouse.x = e.target.x;
+			this.game.mouse.y = e.target.y;
+			this.game.mouse.pressed = false;
+		});
 	}
 
 	getKeyName(key) {
 		switch (key) {
 			case ' ':
 				return 'space';
-				break;
+
 			default:
 				return key;
 		}
