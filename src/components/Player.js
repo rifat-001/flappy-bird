@@ -45,7 +45,7 @@ export default class Player {
 		this.isOnGround = false;
 		this.isOnTop = false;
 
-		// fly utility
+		// fly timer utility
 		this.flyTimer = 0;
 		this.flyInterval = 15;
 		this.flyUpValue = 7;
@@ -70,7 +70,7 @@ export default class Player {
 
 		if (this.y < 0) this.isOnTop = true;
 		if (this.y > this.game.height - this.height) this.isOnGround = true;
-		console.log(this.y);
+		// console.log(this.y);
 	}
 
 	render(context) {

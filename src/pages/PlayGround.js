@@ -2,10 +2,12 @@ import Page from '../Page.js';
 import Player from '../components/Player.js';
 import Piller from '../components/Piller.js';
 import { rectCollision } from '../utility.js';
+import ScoreUI from '../ui/playGroundUI/scoreUI.js';
 class PlayGround extends Page {
 	constructor(...args) {
 		super(...args);
 		this.player = new Player(this.game);
+		this.scoreUI = new ScoreUI(this.game, this, 0, 0, 200, 50);
 
 		// piller container
 		this.pillersTop = [];
@@ -17,6 +19,12 @@ class PlayGround extends Page {
 
 		// game condition
 		this.gameOver = false;
+
+		// score utility
+		this.score = 0;
+		this.scoreTimer = 0;
+		this.scoreInterval = 1000;
+		this.currentScorePointPerSecond = 5;
 	}
 
 	update(deltaTime) {
@@ -24,6 +32,11 @@ class PlayGround extends Page {
 		if (this.gameOver && !this.checkGameRestartCondition()) {
 			return;
 		}
+
+		if (this.scoreTimer >= this.scoreInterval) {
+			this.score += this.currentScorePointPerSecond;
+			this.scoreTimer = 0;
+		} else this.scoreTimer += deltaTime;
 
 		// update player
 		this.player.update(deltaTime);
@@ -46,6 +59,9 @@ class PlayGround extends Page {
 
 		// checking Game over condition
 		this.checkGameOverCondition();
+
+		// updating score UI if necessary
+		this.scoreUI.update();
 	}
 
 	render(context) {
@@ -57,6 +73,7 @@ class PlayGround extends Page {
 		if (this.gameOver) {
 			this.game.UI.renderGameOverUI(context);
 		}
+		this.scoreUI.render(context);
 	}
 
 	addNewPiller() {
@@ -128,6 +145,9 @@ class PlayGround extends Page {
 			this.player = new Player(this.game);
 
 			this.gameOver = false;
+
+			this.score = 0;
+			this.scoreTimer = 0;
 		} else return false; // game should not restart
 	}
 }

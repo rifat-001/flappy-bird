@@ -34,7 +34,7 @@ class Game {
 		// game state
 		this.speed = 3;
 
-		this.debug = true;
+		this.debug = false;
 	}
 
 	/**
