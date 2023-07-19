@@ -2,8 +2,9 @@ import Page from '../Page.js';
 import Player from '../components/Player.js';
 import Piller from '../components/Piller.js';
 import { rectCollision } from '../utility.js';
-import ScoreUI from '../ui/playGroundUI/scoreUI.js';
 import GameOverUI from '../ui/playGroundUI/GameOverUI.js';
+import ScoreUI from '../ui/playGroundUI/ScoreUi.js';
+
 class PlayGround extends Page {
 	constructor(...args) {
 		super(...args);

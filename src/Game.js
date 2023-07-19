@@ -1,7 +1,6 @@
 import PlayGround from './pages/PlayGround.js';
 import HomePage from './pages/HomePage.js';
 import InputHandler from './InputHandler.js';
-import UI from './UI.js';
 
 class Game {
 	/**
@@ -13,7 +12,6 @@ class Game {
 		this.width = canvas.width;
 		this.ctx = canvas.getContext('2d');
 		this.inputHandler = new InputHandler(this);
-		this.UI = new UI(this);
 
 		/**
 		 *  @game_container
